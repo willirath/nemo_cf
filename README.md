@@ -1,2 +1,3 @@
-# nemo_cf
+# NEMO CF
+
 Make NEMO output CF compliant
