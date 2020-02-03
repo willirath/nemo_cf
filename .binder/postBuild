@@ -6,3 +6,4 @@ curl \
 
 mkdir -p test_data/
 unzip NEMO_GYRE_test_data_all_files.zip -d test_data/NEMO_GYRE_test_data
+rm -fv NEMO_GYRE_test_data_all_files.zip
