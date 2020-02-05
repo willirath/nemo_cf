@@ -2,6 +2,8 @@
 
 """Tests for the `nemo_cf.cli` package."""
 
+from click.testing import CliRunner	
+
 from nemo_cf import cli
 
 
