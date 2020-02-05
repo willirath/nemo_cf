@@ -3,7 +3,7 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/willirath/nemo_cf/master)
 [![PyPi status](https://img.shields.io/pypi/v/nemo_cf.svg)](https://pypi.python.org/pypi/nemo_cf)
 [![Travis Status](https://img.shields.io/travis/willirath/nemo_cf.svg)](https://travis-ci.com/willirath/nemo_cf)
-[![Docs status]](https://readthedocs.org/projects/nemo-cf/badge/?version=latest)](https://nemo-cf.readthedocs.io/en/latest/?badge=latest)
+[![Docs status](https://readthedocs.org/projects/nemo-cf/badge/?version=latest)](https://nemo-cf.readthedocs.io/en/latest/?badge=latest)
 
 Make NEMO output CF compliant
 
