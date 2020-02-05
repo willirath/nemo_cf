@@ -4,6 +4,6 @@ curl \
     -o NEMO_GYRE_test_data_all_files.zip \
     https://zenodo.org/record/3634491/files/NEMO_GYRE_test_data_all_files.v2020.02.03.1.zip
 
-mkdir -p test_data/
-unzip NEMO_GYRE_test_data_all_files.zip -d test_data/NEMO_GYRE_test_data
+mkdir -p examples/test_data/
+unzip NEMO_GYRE_test_data_all_files.zip -d examples/test_data/NEMO_GYRE_test_data
 rm -fv NEMO_GYRE_test_data_all_files.zip
