@@ -15,7 +15,7 @@ def update_mesh_mask_attrs(dataset, attrs=mesh_mask_attrs):
     return update_all_vars_attrs(dataset, attrs=attrs)
 
 
-def safely_drop_labels(dataset, labels=None):
+def safely_drop_vars(dataset, vars=None):
     """Drop labels dataset if they are present."""
-    valid_labels = filter(lambda label: label in dataset, labels)
-    return dataset.drop_labels(valid_labels)
+    valid_vars = filter(lambda var: var in dataset, vars)
+    return dataset.drop_vars(valid_vars)

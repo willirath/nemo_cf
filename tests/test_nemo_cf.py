@@ -2,7 +2,7 @@
 
 """Tests for the `nemo_cf.cli` package."""
 
-from nemo_cf.nemo_cf import update_all_vars_attrs, safely_drop_labels
+from nemo_cf.nemo_cf import update_all_vars_attrs, safely_drop_vars
 
 import xarray as xr
 
@@ -20,9 +20,9 @@ def test_update_all_vars_attrs_works():
     assert dataset["var_01"].attrs["coordinates"] == ""
 
 
-def test_safe_label_dropper():
+def test_safe_var_dropper():
     dataset = xr.DataArray([], name="var_01").to_dataset()
 
-    assert "var_01" in safely_drop_labels(dataset, ["var_02", "var_03"])
+    assert "var_01" in safely_drop_vars(dataset, ["var_02", "var_03"])
 
-    assert "var_01" not in safely_drop_labels(dataset, ["var_01", "var_02"])
+    assert "var_01" not in safely_drop_vars(dataset, ["var_01", "var_02"])
