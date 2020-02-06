@@ -9,7 +9,7 @@ import xarray as xr
 
 def test_update_all_vars_attrs_works():
 
-    dataset = xr.DataArray([], dims=(), name="var_01").to_dataset()
+    dataset = xr.DataArray([], name="var_01").to_dataset()
     new_attrs = {
         "var_01": {
             {"units": "meters", "coordinates": ""}
@@ -23,7 +23,7 @@ def test_update_all_vars_attrs_works():
 
 
 def test_safe_label_dropper():
-    dataset = xr.DataArray([], dims=(), name="var_01").to_dataset()
+    dataset = xr.DataArray([], name="var_01").to_dataset()
 
     assert "var_01" in safely_drop_labels(dataset, ["var_02", "var_03"])
 
