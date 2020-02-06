@@ -13,3 +13,9 @@ def update_all_vars_attrs(dataset, attrs=None):
 def update_mesh_mask_attrs(dataset, attrs=mesh_mask_attrs):
     """Update a mesh_mask dataset to have CF compliant metadata."""
     return update_all_vars_attrs(dataset, attrs=attrs)
+
+
+def safely_drop_labels(dataset, labels=None):
+    """Drop labels dataset if they are present."""
+    valid_labels = filter(lambda label: label in ds, labels)
+    return ds.drop_labels(valid_labels)
