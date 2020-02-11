@@ -1,8 +1,8 @@
 """Console script for nemo_cf."""
 import sys
-import zipfile
-import urllib.request
 import click
+
+from .aux import download_and_extract_zip_file
 
 
 @click.command()
@@ -17,9 +17,7 @@ import click
 def main(target_dir, url):
     """Download NEMO example data."""
 
-    filehandle = urllib.request.urlretrieve(url)[0]
-    zip_file_object = zipfile.ZipFile(filehandle, 'r')
-    zip_file_object.extractall(target_dir)
+    download_and_extract_zip_file(url=url, target_dir=target_dir)
 
     return 0
 
