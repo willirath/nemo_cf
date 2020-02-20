@@ -48,7 +48,7 @@ def test_safe_var_dropper():
     assert "var_01" not in safely_drop_vars(dataset, ["var_01", "var_02"])
 
 
-def test_mesh_mask_updating(test_data_dir):
+def test_updated_mesh_mask_has_no_nav_lev_lat_lon(test_data_dir):
     mesh_mask_file = test_data_dir / "mesh_mask.nc"
     mesh_mask_ds = xr.open_dataset(mesh_mask_file)
     mesh_mask_ds_updated = update_mesh_mask_dataset(mesh_mask_ds)
@@ -56,3 +56,11 @@ def test_mesh_mask_updating(test_data_dir):
     assert "nav_lev" not in mesh_mask_ds_updated.data_vars
     assert "nav_lat" not in mesh_mask_ds_updated.data_vars
     assert "nav_lon" not in mesh_mask_ds_updated.data_vars
+
+
+def test_updated_mesh_mask_has_no_singleton_dims(test_data_dir):
+    mesh_mask_file = test_data_dir / "mesh_mask.nc"
+    mesh_mask_ds = xr.open_dataset(mesh_mask_file)
+    mesh_mask_ds = update_mesh_mask_dataset(mesh_mask_ds)
+
+    assert all(d != 0 for d in mesh_mask_ds.dims.values())

@@ -22,9 +22,14 @@ def update_mesh_mask_attrs(dataset, attrs=mesh_mask_attrs):
 
 
 def update_mesh_mask_dataset(
-    dataset, attrs=mesh_mask_attrs, drop_vars=("nav_lev", "nav_lat", "nav_lon")
+    dataset,
+    attrs=mesh_mask_attrs,
+    drop_vars=("nav_lev", "nav_lat", "nav_lon"),
+    squeeze_singleton=True,
 ):
     """Add attributes and drop un-wanted variables."""
-    annotated_dataset = update_mesh_mask_attrs(dataset, attrs=attrs)
-    dropped_dataset = safely_drop_vars(annotated_dataset, vars=drop_vars)
-    return dropped_dataset
+    dataset = update_mesh_mask_attrs(dataset, attrs=attrs)
+    dataset = safely_drop_vars(dataset, vars=drop_vars)
+    if squeeze_singleton:
+        dataset = dataset.squeeze()
+    return dataset
