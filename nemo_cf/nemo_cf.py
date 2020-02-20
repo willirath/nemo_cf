@@ -10,6 +10,7 @@ def update_all_vars_attrs(dataset, attrs=None):
     return dataset
 
 
+
 def safely_drop_vars(dataset, vars=None):
     """Drop labels dataset if they are present."""
     valid_vars = filter(lambda var: var in dataset, vars)
