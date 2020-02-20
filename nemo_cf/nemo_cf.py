@@ -10,12 +10,27 @@ def update_all_vars_attrs(dataset, attrs=None):
     return dataset
 
 
-def update_mesh_mask_attrs(dataset, attrs=mesh_mask_attrs):
-    """Update a mesh_mask dataset to have CF compliant metadata."""
-    return update_all_vars_attrs(dataset, attrs=attrs)
-
 
 def safely_drop_vars(dataset, vars=None):
     """Drop labels dataset if they are present."""
     valid_vars = filter(lambda var: var in dataset, vars)
     return dataset.drop_vars(valid_vars)
+
+
+def update_mesh_mask_attrs(dataset, attrs=mesh_mask_attrs):
+    """Update a mesh_mask dataset to have CF compliant metadata."""
+    return update_all_vars_attrs(dataset, attrs=attrs)
+
+
+def update_mesh_mask_dataset(
+    dataset,
+    attrs=mesh_mask_attrs,
+    drop_vars=("nav_lev", "nav_lat", "nav_lon"),
+    squeeze_singleton=True,
+):
+    """Add attributes and drop un-wanted variables."""
+    dataset = update_mesh_mask_attrs(dataset, attrs=attrs)
+    dataset = safely_drop_vars(dataset, vars=drop_vars)
+    if squeeze_singleton:
+        dataset = dataset.squeeze()
+    return dataset

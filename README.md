@@ -7,6 +7,16 @@
 
 Make NEMO output CF compliant
 
+## Purpose of this tool
+
+Starting from standard NEMO / XIOS2 output, we aim at creating datasets that have the following properties:
+
+1. no un-ambiguous names and labels,
+2. every variable contains information about the attached coordinates,
+3. every variable has a unit, a long name, if possible a standard name.
+
+Note that 1. implies that coordinate names like `nav_lon` and `nav_lat` should be replaced by the respective `glam?` and `gphi` fields.
+
 ## Materials
 
 - [NEMO book (pdf)](https://www.nemo-ocean.eu/wp-content/uploads/NEMO_book.pdf)
