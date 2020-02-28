@@ -21,7 +21,7 @@ Note that 1. implies that coordinate names like `nav_lon` and `nav_lat` should b
 
 - [NEMO book (pdf)](https://www.nemo-ocean.eu/wp-content/uploads/NEMO_book.pdf)
 - [CF conventions (v1.7)](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html)
-
+- The [UBC Salish Sea Model Project](https://salishsea.eos.ubc.ca/) erddap server [has lots of metadata suggestions](https://salishsea.eos.ubc.ca/erddap/griddap/index.html?page=1&itemsPerPage=1000).
 
 ## Credits
 
