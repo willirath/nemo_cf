@@ -9,7 +9,6 @@ def are_nc_files_in_dir(directory):
     directory = Path(directory)
     nc_files = list(directory.glob("*.nc"))
     nc_files += list(directory.glob("**/*.nc"))
-    print(nc_files)
     return len(nc_files) > 0
 
 
