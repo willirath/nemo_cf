@@ -1,8 +1,10 @@
 """Console script for nemo_cf."""
 import sys
+from pprint import pprint
 import click
 
 from .aux import download_and_extract_zip_file
+from .cf_attributes import mesh_mask_attrs
 
 
 @click.command()
@@ -15,7 +17,7 @@ from .aux import download_and_extract_zip_file
         "NEMO_GYRE_test_data_all_files.v2020.02.03.1.zip"
     ),
 )
-def main(target_dir, force, url):
+def download_data(target_dir, force, url):
     """Download NEMO example data."""
 
     download_and_extract_zip_file(url=url, target_dir=target_dir, force=force)
@@ -23,5 +25,15 @@ def main(target_dir, force, url):
     return 0
 
 
+@click.command()
+def print_info():
+    """Print info about NEMO cf."""
+
+    print("nemo_cf will apply the following attributes:\n")
+    pprint(mesh_mask_attrs)
+
+    return 0
+
+
 if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
+    sys.exit(print_info())  # pragma: no cover
