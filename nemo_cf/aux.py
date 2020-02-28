@@ -9,7 +9,8 @@ def are_nc_files_in_dir(directory):
     directory = Path(directory)
     nc_files = list(directory.glob("*.nc"))
     nc_files += list(directory.glob("**/*.nc"))
-    return len(nc_files) == 0
+    print(nc_files)
+    return len(nc_files) > 0
 
 
 def download_and_extract_zip_file(target_dir=None, url=None, force=False):
