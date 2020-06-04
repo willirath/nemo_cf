@@ -5,73 +5,79 @@ mesh_mask_attrs = {}
 # longitude fields
 mesh_mask_attrs.update(
     {
-        f"glam{grid}": {
-            "long_name": f"longitude of {grid.upper()}-grid points",
+        f"glam{hgrid}": {
+            "long_name": f"longitude of {hgrid.upper()}-grid points",
             "units": "degrees_east",
             "standard_name": "longitude",
+            "nemo_cf_hgrid": hgrid,
         }
-        for grid in ["t", "u", "v", "f"]
+        for hgrid in ["t", "u", "v", "f"]
     }
 )
 
 # latitude fields
 mesh_mask_attrs.update(
     {
-        f"gphi{grid}": {
-            "long_name": f"latitude of {grid.upper()}-grid points",
+        f"gphi{hgrid}": {
+            "long_name": f"latitude of {hgrid.upper()}-grid points",
             "units": "degrees_north",
             "standard_name": "latitude",
+            "nemo_cf_hgrid": hgrid,
         }
-        for grid in ["t", "u", "v", "f"]
+        for hgrid in ["t", "u", "v", "f"]
     }
 )
 
 # depth fields
 mesh_mask_attrs.update(
     {
-        f"gdep{grid}_1d": {
-            "long_name": f"depth of {grid.upper()}-grid points",
+        f"gdep{vgrid}_1d": {
+            "long_name": f"depth of {vgrid.upper()}-grid points",
             "units": "meters",
             "positive": "down",
             "standard_name": "depth",
+            "nemo_cf_vgrid": vgrid,
         }
-        for grid in ["t", "w"]
+        for vgrid in ["t", "w"]
     }
 )
 
 # zonal grid constants
 mesh_mask_attrs.update(
     {
-        f"e1{grid}": {
-            "long_name": f"grid spacing on {grid.upper()}-grid in u direction",
+        f"e1{hgrid}": {
+            "long_name": f"grid spacing on {hgrid.upper()}-grid in u direction",
             "units": "meters",
-            "coordinates": f"glam{grid} gphi{grid}",
+            "coordinates": f"glam{hgrid} gphi{hgrid}",
+            "nemo_cf_hgrid": hgrid,
         }
-        for grid in ["t", "u", "v", "f"]
+        for hgrid in ["t", "u", "v", "f"]
     }
 )
 
 # meridional grid constants
 mesh_mask_attrs.update(
     {
-        f"e2{grid}": {
-            "long_name": f"grid spacing on {grid.upper()}-grid in v direction",
+        f"e2{hgrid}": {
+            "long_name": f"grid spacing on {hgrid.upper()}-grid in v direction",
             "units": "meters",
-            "coordinates": f"glam{grid} gphi{grid}",
+            "coordinates": f"glam{hgrid} gphi{hgrid}",
+            "nemo_cf_hgrid": hgrid,
         }
-        for grid in ["t", "u", "v", "f"]
+        for hgrid in ["t", "u", "v", "f"]
     }
 )
 
 # vertical grid constants
 mesh_mask_attrs.update(
     {
-        f"e3{grid}_1d": {
-            "long_name": f"grid spacing on {grid.upper()}-grid in w direction",
+        f"e3{vgrid}_1d": {
+            "long_name": f"grid spacing on {vgrid.upper()}-grid in w direction",
             "units": "meters",
-            "coordinates": f"gdep{grid}_1d",
+            "coordinates": f"gdep{vgrid}_1d",
+            "nemo_cf_vgrid": vgrid,
         }
-        for grid in ["t", "w"]
+        for vgrid in ["t", "w"]
     }
 )
 
@@ -80,26 +86,29 @@ mesh_mask_attrs.update(
 # (c/f NEMO book)
 mesh_mask_attrs.update(
     {
-        f"{grid}mask": {
-            "long_name": f"mask for {grid.upper()}-grid",
+        f"{hgrid}mask": {
+            "long_name": f"mask for {hgrid.upper()}-grid",
             "flag_meanings": "land, water",
             "flag_values": "0, 1",
-            "coordinates": f"gdept_1d glam{grid} gphi{grid}",
+            "coordinates": f"gdept_1d glam{hgrid} gphi{hgrid}",
+            "nemo_cf_hgrid": hgrid,
+            "nemo_cf_vgrid": "t",
         }
-        for grid in ["t", "u", "v", "f"]
+        for hgrid in ["t", "u", "v", "f"]
     }
 )
 
 # util masks
 mesh_mask_attrs.update(
     {
-        f"{grid}maskutil": {
-            "long_name": f"mask for {grid.upper()}-grid without halo",
+        f"{hgrid}maskutil": {
+            "long_name": f"mask for {hgrid.upper()}-grid without halo",
             "flag_meanings": "land, water",
             "flag_values": "0, 1",
-            "coordinates": f"glam{grid} gphi{grid}",
+            "coordinates": f"glam{hgrid} gphi{hgrid}",
+            "nemo_cf_hgrid": hgrid,
         }
-        for grid in ["t", "u", "v", "f"]
+        for hgrid in ["t", "u", "v", "f"]
     }
 )
 
@@ -110,6 +119,7 @@ mesh_mask_attrs.update(
             "long_name": "Coriolis parameter on F-grid",
             "units": "s-1",
             "coordinates": "glamf gphif",
+            "nemo_cf_hgrid": "t",
         }
     }
 )
@@ -120,6 +130,7 @@ mesh_mask_attrs.update(
         "mbathy": {
             "long_name": "number of ocean levels at xy grid point",
             "coordinates": "glamt gphit",
+            "nemo_cf_hgrid": "t",
         }
     }
 )
